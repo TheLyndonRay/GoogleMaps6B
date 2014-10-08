@@ -4,16 +4,50 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.app.Activity;
-import android.os.Bundle;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MainActivity extends Activity {
+
+    private GoogleMap mapObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mapObject = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+
+        mapObject.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+        Marker marker0 = mapObject.addMarker(new MarkerOptions()
+                .position(new LatLng(47.615535, -122.349656))
+                .title("Black Bottle")
+                .snippet("I drank 4 beers here! - Unite2014")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.cutman)));
+
+        Marker marker1 = mapObject.addMarker(new MarkerOptions()
+                .position(new LatLng(49.284472, -123.125278))
+                .title("Red Robin")
+                .snippet("I ate a chicken burger here")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.elecman)));
+
+        Marker marker2 = mapObject.addMarker(new MarkerOptions()
+                .position(new LatLng(49.898307, -97.141016))
+                .title("King's Head")
+                .snippet("Saltiest poutines")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bombman)));
+
+        //marker0.showInfoWindow();
+        //marker1.showInfoWindow();
+        //marker2.showInfoWindow();
+
     }
 
 

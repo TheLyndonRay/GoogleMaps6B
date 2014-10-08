@@ -16,9 +16,15 @@
 
     <application>
 
+        <!-- HOME PC API KEY -->
+        <!-- <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBNvK5JYLKWQUibVTmocWBNghmn1oGe3aw"/> -->
+
+        <!-- LAPTOP KEY API KEY -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBNvK5JYLKWQUibVTmocWBNghmn1oGe3aw"/>
+            android:value="AIzaSyD2BCHQz7c6VjPh0D7gWyEO0IHGdG4JNg4"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
