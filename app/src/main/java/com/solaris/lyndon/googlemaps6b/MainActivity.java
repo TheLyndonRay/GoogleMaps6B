@@ -7,10 +7,9 @@ import android.view.MenuItem;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends Activity {
@@ -26,7 +25,19 @@ public class MainActivity extends Activity {
 
         mapObject.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-        Marker marker0 = mapObject.addMarker(new MarkerOptions()
+        ArrayList<LatLng> latLngs = new ArrayList<LatLng>();
+
+        latLngs.add(new LatLng(R.string.lat0, R.string.lng0));
+        latLngs.add(new LatLng(R.string.lat1, R.string.lng1));
+        latLngs.add(new LatLng(R.string.lat2, R.string.lng2));
+
+        for (int i=0; i < latLngs.size(); i++){
+
+
+
+        }
+
+        /*Marker marker0 = mapObject.addMarker(new MarkerOptions()
                 .position(new LatLng(47.615535, -122.349656))
                 .title("Black Bottle")
                 .snippet("I drank 4 beers here! - Unite2014")
@@ -42,7 +53,7 @@ public class MainActivity extends Activity {
                 .position(new LatLng(49.898307, -97.141016))
                 .title("King's Head")
                 .snippet("Saltiest poutines")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bombman)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bombman))); */
 
         //marker0.showInfoWindow();
         //marker1.showInfoWindow();
