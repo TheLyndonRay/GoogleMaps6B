@@ -5,4 +5,16 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never" />
+    <item android:id="@+id/action_hybrid"
+        android:title="@string/action_hybrid"
+        android:orderInCategory="4" />
+    <item android:id="@+id/action_satellite"
+        android:title="@string/action_satellite"
+        android:orderInCategory="3" />
+    <item android:id="@+id/action_terrain"
+        android:title="@string/action_terrain"
+        android:orderInCategory="2" />
+    <item android:id="@+id/action_normal"
+        android:title="@string/action_normal"
+        android:orderInCategory="1" />
 </menu>

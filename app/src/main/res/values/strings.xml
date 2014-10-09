@@ -4,10 +4,14 @@
     <string name="app_name">GoogleMaps6B</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_hybrid">Hybrid</string>
+    <string name="action_normal">Normal</string>
+    <string name="action_satellite">Satellite</string>
+    <string name="action_terrain">Terrain</string>
 
     <string name="lat0">47.615535</string>
     <string name="lat1">49.284472</string>
-    <string name="lat2">49.284472</string>
+    <string name="lat2">49.898307</string>
     <string name="lng0">-122.349656</string>
     <string name="lng1">-123.125278</string>
     <string name="lng2">-97.141016</string>
