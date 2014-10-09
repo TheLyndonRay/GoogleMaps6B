@@ -7,7 +7,9 @@ import android.view.MenuItem;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
@@ -24,16 +26,36 @@ public class MainActivity extends Activity {
         mapObject = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
         mapObject.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mapObject.setMyLocationEnabled(true);
 
         ArrayList<LatLng> latLngs = new ArrayList<LatLng>();
+        ArrayList<String> titles = new ArrayList<String>();
+        ArrayList<String> snippets = new ArrayList<String>();
+        ArrayList<Integer> iconReference = new ArrayList<Integer>();
 
-        latLngs.add(new LatLng(R.string.lat0, R.string.lng0));
-        latLngs.add(new LatLng(R.string.lat1, R.string.lng1));
-        latLngs.add(new LatLng(R.string.lat2, R.string.lng2));
+        latLngs.add(new LatLng(Double.parseDouble(getString(R.string.lat0)), Double.parseDouble(getString(R.string.lng0))));
+        latLngs.add(new LatLng(Double.parseDouble(getString(R.string.lat1)), Double.parseDouble(getString(R.string.lng1))));
+        latLngs.add(new LatLng(Double.parseDouble(getString(R.string.lat2)), Double.parseDouble(getString(R.string.lng2))));
+
+        titles.add("Black Bottle");
+        titles.add("Red Robin");
+        titles.add("King's Head Pub");
+
+        snippets.add("The steak was delicious but expensive");
+        snippets.add("I ate a chicken burger here");
+        snippets.add("Saltiest poutines, but I love it");
+
+        iconReference.add(R.drawable.cutman);
+        iconReference.add(R.drawable.elecman);
+        iconReference.add(R.drawable.bombman);
 
         for (int i=0; i < latLngs.size(); i++){
 
-
+            mapObject.addMarker(new MarkerOptions()
+                    .position(latLngs.get(i))
+                    .title(titles.get(i))
+                    .snippet(snippets.get(i))
+                    .icon(BitmapDescriptorFactory.fromResource(iconReference.get(i))));
 
         }
 
