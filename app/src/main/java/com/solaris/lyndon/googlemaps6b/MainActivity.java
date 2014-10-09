@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     private GoogleMap mapObject;
+    private ArrayList<Marker> markers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mapObject = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        markers = new ArrayList<Marker>();
 
         mapObject.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mapObject.setMyLocationEnabled(true);
@@ -51,13 +55,16 @@ public class MainActivity extends Activity {
 
         for (int i=0; i < latLngs.size(); i++){
 
-            mapObject.addMarker(new MarkerOptions()
+            markers.add(mapObject.addMarker(new MarkerOptions()
                     .position(latLngs.get(i))
                     .title(titles.get(i))
                     .snippet(snippets.get(i))
-                    .icon(BitmapDescriptorFactory.fromResource(iconReference.get(i))));
+                    .icon(BitmapDescriptorFactory.fromResource(iconReference.get(i)))));
 
         }
+
+        mapObject.moveCamera(CameraUpdateFactory.newLatLngZoom(markers.get(0).getPosition(), 18));
+        markers.get(0).showInfoWindow();
 
         /*Marker marker0 = mapObject.addMarker(new MarkerOptions()
                 .position(new LatLng(47.615535, -122.349656))
@@ -99,6 +106,21 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        }
+        switch (id) {
+            case R.id.action_hybrid :
+
+                mapObject.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                break;
+            case R.id.action_normal :
+                mapObject.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                break;
+            case R.id.action_satellite :
+                mapObject.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                break;
+            case R.id.action_terrain :
+                mapObject.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
